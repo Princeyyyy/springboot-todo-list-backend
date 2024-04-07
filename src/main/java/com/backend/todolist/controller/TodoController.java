@@ -55,11 +55,10 @@ public class TodoController {
         return todoRepository.save(itemDetails);
     }
 
-    @DeleteMapping("item/{id}")
-    public Boolean deleteUser(@PathVariable("id") Long id) {
+    @DeleteMapping("/delete/item/{id}")
+    public void deleteUser(@PathVariable("id") Long id) {
         Todo user = todoRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User Not Found"));
         todoRepository.delete(user);
-        return true;
     }
 
     @GetMapping("item/{id}")
